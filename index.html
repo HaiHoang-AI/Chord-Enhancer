@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chords Improver</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">Local chord reharmonizer</p>
+          <h1>Chords Improver</h1>
+          <p class="subtitle">Paste a chord-over-lyrics or HopAmChuan-style bracket sheet and get a cleaner, richer progression while keeping the lyrics intact.</p>
+        </div>
+        <div class="status-pill" aria-live="polite">
+          <span class="status-dot"></span>
+          Runs in browser
+        </div>
+      </header>
+
+      <main>
+        <section class="control-panel" aria-labelledby="controls-title">
+          <div>
+            <h2 id="controls-title">Enhancement setup</h2>
+            <p>Use auto-detect for quick demos, or lock a key when you already know the song center.</p>
+          </div>
+
+          <div class="controls">
+            <label class="field">
+              <span>Key</span>
+              <select id="keySelect">
+                <option value="auto">Auto detect</option>
+                <option value="C">C major</option>
+                <option value="Db">Db major</option>
+                <option value="D">D major</option>
+                <option value="Eb">Eb major</option>
+                <option value="E">E major</option>
+                <option value="F">F major</option>
+                <option value="F#">F# major</option>
+                <option value="G">G major</option>
+                <option value="Ab">Ab major</option>
+                <option value="A">A major</option>
+                <option value="Bb">Bb major</option>
+                <option value="B">B major</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Enhancement</span>
+              <select id="intensitySelect">
+                <option value="balanced">Balanced</option>
+                <option value="gentle">Gentle</option>
+                <option value="rich">Richer</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Mood</span>
+              <select id="moodSelect">
+                <option value="auto">Auto mood</option>
+                <option value="warm">Warm</option>
+                <option value="bright">Bright</option>
+                <option value="melancholic">Melancholic</option>
+                <option value="soulful">Soulful</option>
+              </select>
+            </label>
+
+            <div class="button-row">
+              <button class="button secondary" id="loadSampleButton" type="button">Load sample</button>
+              <button class="button primary" id="enhanceButton" type="button">Enhance chords</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="workspace" aria-label="Chord sheet editors">
+          <article class="editor-pane">
+            <div class="pane-header">
+              <div>
+                <h2>Original</h2>
+                <p>Paste chord lines above lyrics, or inline chords like [G]words.</p>
+              </div>
+              <span class="counter" id="inputCounter">0 lines</span>
+            </div>
+            <label class="sr-only" for="inputText">Original chord-over-lyrics sheet</label>
+            <textarea id="inputText" spellcheck="false" placeholder="G              D&#10;Amazing grace, how sweet the sound&#10;&#10;or: [G]Amazing [D]grace, how [Em]sweet the [C]sound"></textarea>
+            <p class="field-message" id="inputMessage" role="status"></p>
+          </article>
+
+          <article class="editor-pane">
+            <div class="pane-header">
+              <div>
+                <h2>Improved</h2>
+                <p>Playing view first, copyable text below.</p>
+              </div>
+              <button class="button icon-button" id="copyButton" type="button" aria-label="Copy improved version">Copy</button>
+            </div>
+            <div class="performance-sheet" id="performanceSheet" aria-label="Guitar-friendly improved chord sheet">
+              <p class="empty-state">Your guitar-friendly chord sheet will appear here.</p>
+            </div>
+            <label class="sr-only" for="outputText">Improved chord-over-lyrics sheet</label>
+            <textarea id="outputText" spellcheck="false" readonly placeholder="Your improved chord sheet will appear here."></textarea>
+            <p class="field-message" id="copyMessage" role="status"></p>
+          </article>
+        </section>
+
+        <section class="summary-panel" aria-labelledby="summary-title">
+          <div>
+            <p class="eyebrow">Analysis</p>
+            <h2 id="summary-title">No run yet</h2>
+          </div>
+          <ul id="changeList">
+            <li>Load the sample or paste a song sheet, then enhance the chords.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
